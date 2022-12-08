@@ -1,7 +1,8 @@
-using Catalog.API.Data;
-using Catalog.API.Repositories;
+using Discount.API.Extensions;
+using Discount.API.Repositories;
+using System.Runtime.CompilerServices;
 
-namespace Catalog.API
+namespace Discount.API
 {
     public class Program
     {
@@ -10,8 +11,7 @@ namespace Catalog.API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddScoped<ICatalogContext, CatalogContext>();
-            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -19,6 +19,8 @@ namespace Catalog.API
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
+
+            app.MigrateDatabase<Program>();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
