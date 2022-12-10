@@ -40,7 +40,7 @@ namespace Ordering.Application.Features.Orders.Commands.CheckoutOrder
         {
             var email = new Email()
             {
-                To = "ivaanquiroz@gmail.com",
+                To = "ivanquiroz@gmail.com",
                 Body = "Order was created.",
                 Subject = "Order was created"
             };
