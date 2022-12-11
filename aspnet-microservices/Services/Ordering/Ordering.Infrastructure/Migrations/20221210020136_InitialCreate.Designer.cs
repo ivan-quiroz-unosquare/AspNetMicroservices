@@ -12,7 +12,7 @@ using Ordering.Infrastructure.Persistence;
 namespace Ordering.Infrastructure.Migrations
 {
     [DbContext(typeof(OrderContext))]
-    [Migration("20221210000703_InitialCreate")]
+    [Migration("20221210020136_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -73,7 +73,6 @@ namespace Ordering.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastModifiedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("LastModifiedDate")

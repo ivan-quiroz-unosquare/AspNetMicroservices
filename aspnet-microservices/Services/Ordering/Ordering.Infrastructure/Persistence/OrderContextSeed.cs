@@ -1,10 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using Ordering.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ordering.Infrastructure.Persistence
 {
@@ -16,7 +11,7 @@ namespace Ordering.Infrastructure.Persistence
             {
                 orderContext.Orders.AddRange(GetPreconfiguredOrder());
                 await orderContext.SaveChangesAsync();
-                logger.LogInformation("Seed database associated with context {DbContextName}", 
+                logger.LogInformation("Seed database associated with context {DbContextName}",
                     typeof(OrderContext).Name);
             }
         }
@@ -33,7 +28,13 @@ namespace Ordering.Infrastructure.Persistence
                     EmailAddress = "ivanquiroz@gmail.com",
                     AddressLine = "Torreon",
                     Country = "Mexico",
-                    TotalPrice = 350
+                    TotalPrice = 350,
+
+                    CardName = "BBVA",
+                    CardNumber = "1234 1234 1234 1234",
+                    Expiration = "03/30",
+                    CVV = "123",
+                    PaymentMethod = 1
                 }
             };
         }

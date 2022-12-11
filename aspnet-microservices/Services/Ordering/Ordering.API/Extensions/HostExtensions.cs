@@ -18,11 +18,11 @@ namespace Ordering.API.Extensions
 
             try
             {
-                logger.LogInformation("Migrating databse associated with context {DbContextName}", typeof(TContext).Name);
+                logger.LogInformation("Migrating database associated with context {DbContextName}", typeof(TContext).Name);
 
                 InvokeSeeder(seeder, context, services);
 
-                logger.LogInformation("Migrated databse associated with context {DbContextName}", typeof(TContext).Name);
+                logger.LogInformation("Migrated database associated with context {DbContextName}", typeof(TContext).Name);
             }
             catch (SqlException ex)
             {
@@ -36,6 +36,8 @@ namespace Ordering.API.Extensions
                 }
                 throw;
             }
+
+            return host;
         }
 
         private static void InvokeSeeder<TContext>(Action<TContext, IServiceProvider> seeder, 
