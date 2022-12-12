@@ -20,7 +20,9 @@ namespace Catalog.API.Repositories
 
         public async Task<Product> GetProduct(string id)
         {
-            return await _context.Products.Find(p => p.Id == id).FirstOrDefaultAsync();
+            var products = await _context.Products.Find(p => true).ToListAsync();
+            return products.FirstOrDefault(p => p.Id == id);
+            //return await _context.Products.Find(p => p.Id == id).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<Product>> GetProductByName(string name)
